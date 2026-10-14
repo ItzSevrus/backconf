@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "settings": {
+    "interval_seconds": 1800,
+    "watch_enabled": false
+  },
+  "targets": []
+}

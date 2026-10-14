@@ -1,0 +1,27 @@
+[Unit]
+Description=Backconf local versioned backup daemon
+After=local-fs.target
+Wants=local-fs.target
+
+[Service]
+Type=simple
+User=root
+Group=backconf
+ExecStart=/usr/bin/python3 /usr/local/lib/backconf/backconfd.py
+Restart=on-failure
+RestartSec=3
+UMask=0077
+RuntimeDirectory=backconf
+RuntimeDirectoryMode=0770
+RuntimeDirectoryPreserve=restart
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/etc/backconf /var/lib/backconf /run/backconf /home /root
+RestrictAddressFamilies=AF_UNIX
+LockPersonality=true
+MemoryMax=512M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target
